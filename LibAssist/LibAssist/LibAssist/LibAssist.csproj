@@ -85,6 +85,11 @@
     <Compile Include="GeneralPage.Designer.cs">
       <DependentUpon>GeneralPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibAssist.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibAssist.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Addin\AddinUtility.cs" />
     <Compile Include="Modules\OutlookBar\OutlookBar.cs">
       <SubType>Component</SubType>
@@ -100,6 +105,11 @@
   <ItemGroup>
     <EmbeddedResource Include="CommandBar.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibAssist.ko.resx" />
+    <EmbeddedResource Include="LibAssist.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LibAssist.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

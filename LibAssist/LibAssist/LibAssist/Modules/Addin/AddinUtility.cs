@@ -122,17 +122,38 @@ namespace LibAssist
 
 		public static OutputWindowPane sGetOutputWindow(DTE2 objApplication, string strItemName)
 		{
+            bool                bNeedToAddNewWindow = true;
+            EnvDTE.OutputWindow OutputWindow = null;
+            OutputWindowPane    OutputPane = null;
 			try {
 				Window objWindow = objApplication.Windows.Item(Constants.vsWindowKindOutput);
-				objWindow.Activate();
-				OutputWindowPane objOutputWnd = ((EnvDTE.OutputWindow)objWindow.Object).OutputWindowPanes.Item(strItemName);
-				objOutputWnd.Activate();
 
-				return objOutputWnd;
+                objWindow.Activate();
+
+                OutputWindow = ((EnvDTE.OutputWindow)objWindow.Object);
+
+                if(OutputWindow != null && OutputWindow.OutputWindowPanes.Count <= 0 )
+                {
+                    throw new Exception( "Not enough Output window" );
+                }
+
+                OutputPane = OutputWindow.OutputWindowPanes.Item(strItemName);
+                if(OutputPane != null)
+                {
+                    bNeedToAddNewWindow = false;
+                }
 			} catch (Exception objExcept) {
 				Trace.WriteLine(objExcept.Message);
-				return null;
 			}
+
+            if(bNeedToAddNewWindow)
+            {
+                OutputPane = OutputWindow.OutputWindowPanes.Add(strItemName);
+            }
+
+            OutputPane.Activate();
+
+            return OutputPane;
 		}
 
 		public static ArrayList sGetSelectedProjectList(DTE2 objApplication)

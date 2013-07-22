@@ -181,8 +181,8 @@ namespace LibAssist
 		private Button		m_objCancelButton 	= null;
 		private Button		m_objOKButton		= null;
 		private	Control		m_objEDTValue		= null;
-		private Control		m_objEDTKey		= null;
-		private Control[]	Editors			= null;
+		private Control		m_objEDTKey		    = null;
+		private Control[]	Editors			    = null;
 		private ListViewEx	m_objListViewEx 	= null;
 
 		private void OnOK( object objSender, EventArgs objEventArgs )
